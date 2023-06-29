@@ -1,0 +1,79 @@
+# Cat Cafe Adoption Text Game
+
+# List of available cats
+cats = [
+    {"id": 1, "name": "Jiji", "breed": "Siamese", "age": 2, "color": "brown"},
+    {"id": 2, "name": "Bread", "breed": "Persian", "age": 4, "color": "white"},
+    {"id": 3, "name": "Oreo", "breed": "Maine Coon", "age": 3, "color": "black and white"},
+    {"id": 4, "name": "Simba", "breed": "Bengal", "age": 1, "color": "orange"},
+]
+
+# Display welcome message
+print("Welcome to the Cat Cafe Adoption Game!")
+
+# Main game loop
+while True:
+    # Display menu options
+    print("\nMenu Options:")
+    print("1. Adopt a cat")
+    print("2. View available cats")
+    print("3. Play with a cat")
+    print("4. Exit")
+
+    # Prompt for command
+    command = input("What would you like to do? (1-4): ")
+
+    # Process command
+    if command == "1":
+        # Adopt a cat
+        print("\nAvailable Cats:")
+        for cat in cats:
+            print(f"ID: {cat['id']}, Name: {cat['name']}, Breed: {cat['breed']}")
+
+        cat_id = int(input("Enter the ID of the cat you want to adopt: "))
+        found = False
+
+        # Check if cat ID is valid
+        for cat in cats:
+            if cat["id"] == cat_id:
+                found = True
+                print(f"\nCongratulations! You have adopted {cat['name']}. Enjoy your new furry friend!")
+                cats.remove(cat)
+                break
+
+        # Display error message for invalid cat ID
+        if not found:
+            print("\nInvalid cat ID. Please try again.")
+
+    elif command == "2":
+        # View available cats
+        print("\nAvailable Cats:")
+        for cat in cats:
+            print(f"ID: {cat['id']}, Name: {cat['name']}, Breed: {cat['breed']}, Age: {cat['age']}, Color: {cat['color']}")
+
+    elif command == "3":
+        # Play with a cat
+        cat_id = int(input("Enter the ID of the cat you want to play with: "))
+        found = False
+
+        # Check if cat ID is valid
+        for cat in cats:
+            if cat["id"] == cat_id:
+                found = True
+                print(f"\nYou are playing with {cat['name']}!")
+                # Add custom play logic here
+                break
+
+        # Display error message for invalid cat ID
+        if not found:
+            print("\nInvalid cat ID. Please try again.")
+
+    elif command == "4":
+        # Exit the game
+        print("\nThank you for playing the Cat Cafe Adoption Game. Goodbye!")
+        break
+
+    else:
+        # Invalid command
+        print("\nInvalid command. Please enter a number from 1 to 4.")
+
