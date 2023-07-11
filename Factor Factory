@@ -1,0 +1,12 @@
+
+number = int(input("Please enter a number: "))
+
+print("The factors of " + str(number) + " are: ")
+if max(number, 0):
+    for i in range(1, number + 1):
+        if number % i == 0:
+            print(i)
+else:
+    print("Please input a positive number: ")
+
+
