@@ -1,0 +1,46 @@
+class Student:
+    def __init__(self, name, grade, python_version, python_experience, command_line_experience, vector_overlay=False, operating_system=""):
+        self.name = name
+        self.grade = grade
+        self.python_version = python_version
+        self.python_experience = python_experience
+        self.command_line_experience = command_line_experience
+        self.vector_overlay = vector_overlay
+        self.operating_system = operating_system
+
+    def self_introduction(self):
+        intro = "Hi, my name is " + self.name + " and I'm in grade " + str(self.grade) + ". "
+        intro += "I have Python version " + self.python_version + " installed and currently have " + self.get_experience_description(self.python_experience) + ". "
+        intro += "My command line experience is " + self.get_experience_description(self.command_line_experience) + ". "
+        intro += "I have " + ('created' if not self.vector_overlay else 'not created') + " a vector overlay. "
+        intro += "I use " + self.operating_system + " as my operating system. "
+        print(intro)
+        return intro
+
+    def get_experience_description(self, experience):
+        if experience <= 3:
+            return "Limited"
+        elif experience <= 6:
+            return "Moderate"
+        else:
+            return "Advanced"
+        # between 0 and 3 = 0 = limited
+        # between 4 and 6 = 1 = moderate
+        # between 7 and 10 = 2 = advanced
+
+students = [
+    Student("Maya", 10, "1.5", 6, 5, False, "Windows" ),
+    Student("Finn", 12, "2.0", 1, 3, False, "Mac"),
+    Student("Paige", 9, "1.6", 8, 9, True, "Linux"),
+    Student("Charlie", 11, "1.0", 5, 6, False, "Windows"),
+    Student("Wyatt", 12, "2.0", 8, 9, False, "Mac")
+]
+
+# Made text file registration.txt and used "w" for write mode
+registration_file = "registration.txt"
+
+# Open file in write mode
+with open(registration_file, "w") as file:
+    for student in students:  # Changed the loop variable to "student"
+        intro = student.self_introduction()
+        file.write(intro + "\n") # Write the self-introduction to the file
